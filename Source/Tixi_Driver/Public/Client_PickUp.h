@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Components/BoxComponent.h"
 #include "Client_PickUp.generated.h"
 
 UCLASS()
@@ -23,17 +24,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	class UBoxComponent* CollisionBox;
 
-public:
-	void Interacted();
-	bool GetActive() const;
+	UFUNCTION()
+	void OnOverlapBegin(UPrimitiveComponent* OverLappedComp, AActor* OtherActor, UPrimitiveComponent* OtherCamp, int32 OtherBodyIndex, bool BFromSweep, const FHitResult& SweepResult);
 
-
-private:
-	
-	UPROPERTY()
-	bool bActive;
-
-	UPROPERTY(VisibleAnywhere, Category = "Mesh")
-	class UStaticMeshComponent* mesh;
+	UFUNCTION()
+	void OnOverlapEnd(UPrimitiveComponent* OverLappedComp, AActor* OtherActor, UPrimitiveComponent* OtherCamp, int32 OtherBodyIndex);
 };
