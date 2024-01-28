@@ -31,6 +31,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	UCurveFloat* MinimumDotProductCurve = nullptr;
 
+	//the minimum dot product we must have to turn the car left or right at a given fraction of maximum speed when reversing
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
+	UCurveFloat* MinimumDotProductCurveReverse = nullptr;
+
 	//the minimum speed we must be moving at to turn the car left or right
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	float MinimumSpeed = 100.f;

@@ -76,7 +76,7 @@ void UPlayerMovementComponent::TickComponent(float DeltaTime, ELevelTick TickTyp
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	//check if speed is less than minimum speed
-	if (const float DotProduct = FVector::DotProduct(Velocity.GetSafeNormal(), GetCharacterOwner()->GetMesh()->GetComponentRotation().Vector()); DotProduct < MinimumDotProductCurve->GetFloatValue(Velocity.Size() / GetMaxSpeed()))
+	if (const float DotProduct = FVector::DotProduct(Velocity.GetSafeNormal(), GetCharacterOwner()->GetMesh()->GetComponentRotation().Vector()); DotProduct < MinimumDotProductCurve->GetFloatValue(Velocity.Size() / GetMaxSpeed()) || (DotProduct < 0 && FMath::Abs(DotProduct) > MinimumDotProductCurveReverse->GetFloatValue(Velocity.Size() / GetMaxSpeed())))
 	{
 		//set the velocity to be either forwards or backwards based on the dot product
 		Velocity = GetCharacterOwner()->GetMesh()->GetComponentRotation().Vector() * Velocity.Size() * FMath::Sign(DotProduct);
