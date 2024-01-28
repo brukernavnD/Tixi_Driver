@@ -56,7 +56,7 @@ class ATixi_DriverCharacter : public ACharacter
 	UInputAction* LookAction;
 
 public:
-	ATixi_DriverCharacter();
+	explicit ATixi_DriverCharacter(const FObjectInitializer& ObjectInitializer);
 	
 
 protected:

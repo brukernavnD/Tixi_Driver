@@ -1,4 +1,5 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
+#pragma once
 
 #include "Tixi_Driver/Public/Tixi_DriverCharacter.h"
 #include "Engine/LocalPlayer.h"
@@ -10,6 +11,7 @@
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+#include "PlayerMovementComponent.h"
 #include "Tixi_Driver/Public/DialogueComponent.h"
 #include "Tixi_Driver/Public/TicsComponent.h"
 
@@ -18,8 +20,10 @@ DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 //////////////////////////////////////////////////////////////////////////
 // ATixi_DriverCharacter
 
-ATixi_DriverCharacter::ATixi_DriverCharacter()
+ATixi_DriverCharacter::ATixi_DriverCharacter(const FObjectInitializer& ObjectInitializer) : Super(
+	ObjectInitializer.SetDefaultSubobjectClass<UPlayerMovementComponent>(CharacterMovementComponentName))
 {
+	
 	//initialize components
 	DialogueComponent = CreateDefaultSubobject<UDialogueComponent>(TEXT("DialogueComponent"));
 	TicsComponent = CreateDefaultSubobject<UTicsComponent>(TEXT("TicsComponent"));
