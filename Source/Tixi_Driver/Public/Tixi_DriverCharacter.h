@@ -81,9 +81,19 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
-	//function to do a tic
+	//tic functions
+
 	UFUNCTION(BlueprintImplementableEvent, Category = "Tics")
-	void DoTic(const int32 TicIndex);
+	void DoImpulse();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Tics")
+	void DoCarHorn();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Tics")
+	void DoCarAlarm();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Tics")
+	void DoMaxGas();
 
 	//the duration of the current tic (set this after the tic has been chosen)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

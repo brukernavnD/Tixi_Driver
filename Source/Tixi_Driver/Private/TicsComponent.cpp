@@ -66,6 +66,31 @@ void UTicsComponent::DoAction()
 		return;
 	}
 
-	//call the do tic function
-	Taxi->DoTic(TicsArray[CurrentIndex]);
+	switch (TicsArray[CurrentIndex])
+	{
+		case 0:
+		{
+			//do impulse
+			Taxi->DoImpulse();
+			break;
+		}
+		case 1:
+		{
+			//do car horn
+			Taxi->DoCarHorn();
+			break;
+		}
+		case 2:
+		{
+			//do car alarm
+			Taxi->DoCarAlarm();
+			break;
+		}
+		case 3:
+		{
+			//do max gas
+			Taxi->DoMaxGas();
+			break;
+		}
+	}
 }

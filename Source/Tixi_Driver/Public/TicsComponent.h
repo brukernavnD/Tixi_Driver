@@ -22,7 +22,7 @@ public:
 
 	//the number of different tics
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tics")
-	int NumberOfTics = 0;
+	int NumberOfTics = 4;
 
 	//reference to the owner actor as a taxi actor
 	UPROPERTY()
